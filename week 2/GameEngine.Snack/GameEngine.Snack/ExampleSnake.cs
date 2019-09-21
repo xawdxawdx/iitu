@@ -28,7 +28,7 @@ namespace GameEngine.Snack
                     }
                     else return SnakeDirection.Left;
                 }
-                else if (_myHeadPosition.X < _foodPosition.X)
+                if (_myHeadPosition.X < _foodPosition.X)
                 {
                     if (currentDirection == SnakeDirection.Left)
                     {
@@ -48,7 +48,7 @@ namespace GameEngine.Snack
                     }
                     else return SnakeDirection.Up;
                 }
-                else if (_myHeadPosition.Y < _foodPosition.Y)
+                if (_myHeadPosition.Y < _foodPosition.Y)
                 {
                     if (currentDirection == SnakeDirection.Up)
                     {
@@ -59,17 +59,25 @@ namespace GameEngine.Snack
             }
 
 
-            //
+
             if (_myHeadPosition.Y > _foodPosition.Y)
             {
                 if (_myHeadPosition.X > _foodPosition.X)
                 {
-                    return SnakeDirection.Left;
+                    if (currentDirection == SnakeDirection.Right)
+                    {
+                        return SnakeDirection.Up;
+                    }
+                    else return SnakeDirection.Left;
                 }
                 else
                 if (_myHeadPosition.X < _foodPosition.X)
                 {
-                    return SnakeDirection.Right;
+                    if (currentDirection == SnakeDirection.Left)
+                    {
+                        return SnakeDirection.Down;
+                    }
+                    else return SnakeDirection.Right;
                 }
             }
 
@@ -82,22 +90,37 @@ namespace GameEngine.Snack
 
                 if (_myHeadPosition.X < _foodPosition.X)
                 {
+                    if (currentDirection == SnakeDirection.Left)
+                    {
+                        return SnakeDirection.Down;
+                    }
+                    else
                     return SnakeDirection.Right;
                 }
-                else
+                
                 if (_myHeadPosition.X > _foodPosition.X)
                 {
-                    return SnakeDirection.Left;
+                    if (currentDirection == SnakeDirection.Right)
+                    {
+                        return SnakeDirection.Up;
+                    }
+                    else return SnakeDirection.Left;
                 }
             }
 
-            if (_myHeadPosition.Y > _foodPosition.Y)
-            {
-                if (_myHeadPosition.X > _foodPosition.X)
-                {
-                    return SnakeDirection.Up;
-                }
-            }
+            //if (_myHeadPosition.Y > _foodPosition.Y)
+            //{
+        
+            //    if (_myHeadPosition.X < _foodPosition.X && currentDirection == SnakeDirection.Left)
+            //    {
+            //        return SnakeDirection.Up;
+            //    }
+            //    if (_myHeadPosition.X > _foodPosition.X && currentDirection == SnakeDirection.Right)
+            //    {
+            //        return SnakeDirection.Up;
+            //    }
+
+            //}
             //
             if (currentDirection == SnakeDirection.Up 
                 && _myHeadPosition.Y < _wallDistanceThreshold - 3)
